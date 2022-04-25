@@ -45,8 +45,8 @@ contract ERC721Enumerable is ERC721, IERC721Enumerable{
         _addTokensToOwnerEnumeration(tokenId, to);
     }
 
-    function _transferFrom(address _from, address _to, uint256 _tokenId) internal override(ERC721) {
-        super._transferFrom(_from, _to, _tokenId);
+    function _transfer(address _from, address _to, uint256 _tokenId) internal override(ERC721) {
+        super._transfer(_from, _to, _tokenId);
         _addTokensToOwnerEnumeration(_tokenId, _to);
     }
 

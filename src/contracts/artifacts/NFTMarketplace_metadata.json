@@ -1,0 +1,755 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "bool",
+						"name": "_approved",
+						"type": "bool"
+					}
+				],
+				"name": "ApprovalForAll",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionEnded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "seller",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionStarted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fee",
+						"type": "uint256"
+					}
+				],
+				"name": "FeeTransfered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "bidder",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "HighestBidIncrease",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_seller",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_buyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "NftBought",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "allowBuy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "auctionEnd",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "bid",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "buy",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getApproved",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					}
+				],
+				"name": "isApprovedForAll",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_token",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "mint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_token",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_min_bid",
+						"type": "uint256"
+					}
+				],
+				"name": "mintAuction",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_data",
+						"type": "bytes"
+					}
+				],
+				"name": "safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "operator",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "approved",
+						"type": "bool"
+					}
+				],
+				"name": "setApprovalForAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceID",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenByIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenOfOwnerByIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "tokens",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"getApproved(uint256)": {
+					"details": "See {IERC721-getApproved}."
+				},
+				"isApprovedForAll(address,address)": {
+					"details": "See {IERC721-isApprovedForAll}."
+				},
+				"safeTransferFrom(address,address,uint256,bytes)": {
+					"details": "See {IERC721-safeTransferFrom}."
+				},
+				"setApprovalForAll(address,bool)": {
+					"details": "See {IERC721-setApprovalForAll}."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NFTMarketplace.sol": "NFTMarketplace"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"ERC165.sol": {
+			"keccak256": "0x89adb209c6075a6946fb1b69c0a362105883b6caa268ee1e6d9f9267cac71769",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bf04bd765025354239e775f89d63090a398356a941591626613ae292ffa22184",
+				"dweb:/ipfs/QmRbCn2PtUKMoVVUM7rSrDWfiN3ti26vm8Gm8MZ4DwJWYt"
+			]
+		},
+		"ERC721.sol": {
+			"keccak256": "0x721b3ba90b195527fc1e30ba09c46733e313868718a0e0f66fc9c939b770eec9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://85e4b9489c32d612f7b91d79c263f18b3133ea28afbb08316ae186c907863e1c",
+				"dweb:/ipfs/QmWbGZEC7R8GxhbEq1HZnrDk6tAKnVFcQR4ZYi8XQypAqH"
+			]
+		},
+		"ERC721Connector.sol": {
+			"keccak256": "0x5e334fa475991cf59c6280b086a34039b057d2a6f2ef4f7766c4955c89492eb5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3a80080a7f5ab5a0290787c0a19fff23600a6580b6d01c981295916a590e948a",
+				"dweb:/ipfs/QmcRYjVTpAWaSU5CZEND5ZazTDn2j4BbE4vkyTNhsqtiLj"
+			]
+		},
+		"ERC721Enumerable.sol": {
+			"keccak256": "0x9f484b98726409200c6b9b9a6e8931f82cdd0d27d5634c229510ebacf7c5eca5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bbc9367d24b12c900055bc0812247e316cb82c627d4a663f169e117b1be96cb4",
+				"dweb:/ipfs/QmV8jQHWFKhQtB9FNW8FEfmHxL3XEBmA1xxevVEDeTWiRK"
+			]
+		},
+		"ERC721Metadata.sol": {
+			"keccak256": "0x24843806397284605157855cc68ec7b687f461a5be57f8d9f01c3e2c74a9fa4a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://66a1f60583e816c92f0e33ef5b536bd83049bf78e4d2087082591e38c14f9738",
+				"dweb:/ipfs/QmaTJF8mn1Wd3mSXTX9j3KUpYFC2zJF5KGdr3ADpxCzvyB"
+			]
+		},
+		"NFTMarketplace.sol": {
+			"keccak256": "0x435661a2ad94b847c381842752410a34390e34bd4ad73ccf136a762082abb7cf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3e76d021eab33b33ad42d8273de98fbd76c4d1f488c9dc13366287553fbe38ff",
+				"dweb:/ipfs/QmUHvPSSf9duzDAi3SERYKutsB7yhwwr5JYF5Sqs2NLfpq"
+			]
+		},
+		"interfaces/IERC165.sol": {
+			"keccak256": "0x0c3c3a43db8116ec5b077eaee96eb6b3fea6770b0f05b7470e3926f21a5e503f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://18447c636262f2ba8bea4a3290be61687f4e49ea144a2596370c04e62a84bb71",
+				"dweb:/ipfs/QmYVHx1AY37bE8huDnZQyaFG8ztJU8cq3HYycmFpsYEEH7"
+			]
+		},
+		"interfaces/IERC721.sol": {
+			"keccak256": "0xa64953aba79c2c802568782c78647e84ad8b744c022e563fe4a16096c3d952a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cab69c0f525d1cc035239254dcb55e147395093f14ab1719b24c013b3ec49456",
+				"dweb:/ipfs/QmT8rxSEqqjCy8SREiwpNLz21QW23VaPVbocsxxUxQCUJH"
+			]
+		},
+		"interfaces/IERC721Enumerable.sol": {
+			"keccak256": "0x0dcead453321097d11f9456acc8004380a21566cb58d03ebb6bce9ff8c02d631",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a9072165b9e1afd6d4b9208af83b626aef86a8215ee9cc338a26bfdf4fd35575",
+				"dweb:/ipfs/QmUBwFpeZt42j4CDto71xRDsyBpU2c8yJCraHCkn18awsQ"
+			]
+		},
+		"interfaces/IERC721Metadata.sol": {
+			"keccak256": "0x83f7d041a34a232511018960ffdf593f8a637bf0c8d63defaf506468ddc0acea",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6ab6a439b2a687b1346a3eef8bdca8b754c85e582122c71989338e3192a8659b",
+				"dweb:/ipfs/QmSCLszeE1NGXoHEe9DUfiuoEQne7MdnwXocKSb9J98D6r"
+			]
+		},
+		"interfaces/IERC721Receiver.sol": {
+			"keccak256": "0x7b1930476f6b6eb90fe894722de5ca225850029dbd1c173f9f1fabaf1e58e573",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://84683c818a24ff054bbe0ed1c78ddf9a12bed916a58989e388a0f801d86528e6",
+				"dweb:/ipfs/QmVHSVeHSkqDfG1g5X1FHA1tLD7Wzuwx3uKJydWiGtngdT"
+			]
+		}
+	},
+	"version": 1
+}
