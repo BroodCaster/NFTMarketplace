@@ -8,7 +8,6 @@ let isInitialized = false;
 let web3;
 let address;
 let metaMaskInstalled;
-let privateKey = '16ad930007df59d817c93e4c6f2cb93653e100e936c52b5dcde239710856e958';
 
 export const init = async () => {
     let provider = window.ethereum;
